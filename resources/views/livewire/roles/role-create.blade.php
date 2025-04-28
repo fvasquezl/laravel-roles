@@ -16,10 +16,10 @@
                 <flux:checkbox.group wire:model="permissions" label="Permissions">
                     @foreach ($allPermissions as $permission)
                         <flux:checkbox label="{{ $permission->name }}" :value="{{$permission->name}}" />
-                    @endforeach
+                    @endforeach  
                 </flux:checkbox.group>
                 <flux:button type="submit" variant="primary">Submit</flux:button>
             </form>
-        </div>
+        </div>  
     </div>
 </div>
