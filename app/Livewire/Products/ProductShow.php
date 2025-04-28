@@ -13,11 +13,9 @@ class ProductShow extends Component
     {
         $this->product = Product::findOrFail($id);
     }
+
     public function render()
     {
         return view('livewire.products.product-show');
     }
-
-
-
 }

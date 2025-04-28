@@ -7,13 +7,16 @@ use Livewire\Component;
 
 class ProductEdit extends Component
 {
-    public $product, $name, $detail;
+    public $product;
+
+    public $name;
+
+    public $detail;
 
     public function render()
     {
         return view('livewire.products.product-edit');
     }
-
 
     public function mount($id): void
     {
@@ -21,7 +24,6 @@ class ProductEdit extends Component
         $this->name = $this->product->name;
         $this->detail = $this->product->detail;
     }
-
 
     public function submit()
     {
@@ -34,6 +36,6 @@ class ProductEdit extends Component
         $this->product->detail = $this->detail;
         $this->product->save();
 
-        return  to_route("products.index")->with('success', 'Product updated successfully.');
+        return to_route('products.index')->with('success', 'Product updated successfully.');
     }
 }

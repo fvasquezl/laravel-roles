@@ -13,6 +13,7 @@ class UserShow extends Component
     {
         $this->user = User::findOrFail($id);
     }
+
     public function render()
     {
         return view('livewire.users.user-show');

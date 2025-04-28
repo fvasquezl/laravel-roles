@@ -27,6 +27,7 @@
             </tr>
             </thead>
             <tbody>
+  
             @foreach($users as $user)
                 <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800">
                     <td class="px-6 py-2 font-medium text-gray-900 dark:text-white">{{$user->id}}</td>

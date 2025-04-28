@@ -10,6 +10,7 @@ class UserIndex extends Component
     public function render()
     {
         $users = User::get();
+
         return view('livewire.users.user-index', compact('users'));
     }
 
@@ -17,6 +18,7 @@ class UserIndex extends Component
     {
         $user = User::findOrFail($id);
         $user->delete();
-        return to_route("users.index")->with('success', 'User deleted successfully.');
+
+        return to_route('users.index')->with('success', 'User deleted successfully.');
     }
 }

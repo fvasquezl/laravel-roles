@@ -4,6 +4,7 @@ use App\Livewire\Products\ProductCreate;
 use App\Livewire\Products\ProductEdit;
 use App\Livewire\Products\ProductIndex;
 use App\Livewire\Products\ProductShow;
+use App\Livewire\Roles\RoleCreate;
 use App\Livewire\Roles\RoleIndex;
 use App\Livewire\Users\UserCreate;
 use App\Livewire\Users\UserEdit;
@@ -34,10 +35,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('products/{id}', ProductShow::class)->name('products.show');
 
     Route::get('roles', RoleIndex::class)->name('roles.index');
+    Route::get('roles/create', RoleCreate::class)->name('roles.create');
 
     Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
     Volt::route('settings/password', 'settings.password')->name('settings.password');
     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
 });
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

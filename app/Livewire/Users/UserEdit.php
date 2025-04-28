@@ -7,7 +7,15 @@ use Livewire\Component;
 
 class UserEdit extends Component
 {
-    public $user, $name, $email, $password, $confirm_password;
+    public $user;
+
+    public $name;
+
+    public $email;
+
+    public $password;
+
+    public $confirm_password;
 
     public function mount($id): void
     {
@@ -36,6 +44,6 @@ class UserEdit extends Component
         }
         $this->user->save();
 
-        return  to_route("users.index")->with('success', 'User updated successfully.');
+        return to_route('users.index')->with('success', 'User updated successfully.');
     }
 }

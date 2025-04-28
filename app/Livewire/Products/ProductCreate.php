@@ -7,13 +7,14 @@ use Livewire\Component;
 
 class ProductCreate extends Component
 {
-    public $name, $detail;
+    public $name;
+
+    public $detail;
 
     public function render()
     {
         return view('livewire.products.product-create');
     }
-
 
     public function submit()
     {
@@ -27,6 +28,6 @@ class ProductCreate extends Component
             'detail' => $this->detail,
         ]);
 
-        return  to_route("products.index")->with('success', 'User created successfully.');
+        return to_route('products.index')->with('success', 'User created successfully.');
     }
 }

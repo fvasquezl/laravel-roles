@@ -7,7 +7,13 @@ use Livewire\Component;
 
 class UserCreate extends Component
 {
-    public $name, $email, $password, $confirm_password;
+    public $name;
+
+    public $email;
+
+    public $password;
+
+    public $confirm_password;
 
     public function render()
     {
@@ -28,6 +34,6 @@ class UserCreate extends Component
             'password' => bcrypt($this->password),
         ]);
 
-        return  to_route("users.index")->with('success', 'User created successfully.');
+        return to_route('users.index')->with('success', 'User created successfully.');
     }
 }

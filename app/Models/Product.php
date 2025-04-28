@@ -10,5 +10,4 @@ class Product extends Model
         'name',
         'detail',
     ];
-
 }
