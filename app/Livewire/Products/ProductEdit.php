@@ -36,6 +36,7 @@ class ProductEdit extends Component
         $this->product->detail = $this->detail;
         $this->product->save();
 
-        return to_route('products.index')->with('success', 'Product updated successfully.');
+        return to_route('products.index')
+            ->with('success', 'Product updated successfully.');
     }
 }
