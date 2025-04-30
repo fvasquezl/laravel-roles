@@ -31,15 +31,29 @@ Route::middleware(['auth'])->group(function () {
     Route::get('users/{id}/edit', UserEdit::class)->name('users.edit');
     Route::get('users/{id}', UserShow::class)->name('users.show');
 
-    Route::get('products', ProductIndex::class)->name('products.index');
-    Route::get('products/create', ProductCreate::class)->name('products.create');
-    Route::get('products/{id}/edit', ProductEdit::class)->name('products.edit');
-    Route::get('products/{id}', ProductShow::class)->name('products.show');
+    Route::get('products', ProductIndex::class)->name('products.index')
+        ->middleware('permission:product.view|product.create|product.edit|product.delete');
 
-    Route::get('roles', RoleIndex::class)->name('roles.index');
-    Route::get('roles/create', RoleCreate::class)->name('roles.create');
-    Route::get('roles/{id}/edit', RoleEdit::class)->name('roles.edit');
-    Route::get('roles/{id}', RoleShow::class)->name('roles.show');
+    Route::get('products/create', ProductCreate::class)->name('products.create')
+        ->middleware('permission:product.create');
+
+    Route::get('products/{id}/edit', ProductEdit::class)->name('products.edit')
+        ->middleware('permission:product.edit');
+    Route::get('products/{id}', ProductShow::class)->name('products.show')
+        ->middleware('permission:product.show');
+
+
+
+    Route::get('roles', RoleIndex::class)->name('roles.index')
+        ->middleware('permission:role.view|role.create|role.edit|role.delete');
+
+    Route::get('roles/create', RoleCreate::class)->name('roles.create')
+        ->middleware('permission:role.create');
+
+    Route::get('roles/{id}/edit', RoleEdit::class)->name('roles.edit')
+        ->middleware('permission:role.edit');
+    Route::get('roles/{id}', RoleShow::class)->name('roles.show')
+        ->middleware('permission:role.show');
 
     Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
     Volt::route('settings/password', 'settings.password')->name('settings.password');

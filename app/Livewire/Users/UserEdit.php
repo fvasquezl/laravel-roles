@@ -27,7 +27,7 @@ class UserEdit extends Component
         $this->name = $this->user->name;
         $this->email = $this->user->email;
         $this->allRoles = Role::all();
-        $this->roles = $this->user->roles->pluck('id')->toArray();
+        $this->roles = $this->user->roles->pluck('name')->toArray();
     }
 
     public function render()
@@ -49,6 +49,8 @@ class UserEdit extends Component
             $this->user->password = bcrypt($this->password);
         }
         $this->user->save();
+
+        $this->user->syncRoles($this->roles);
 
         return to_route('users.index')->with('success', 'User updated successfully.');
     }

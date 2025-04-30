@@ -13,10 +13,12 @@
             </div>
         @endsession
 
+        @can('role.create')
         <a href="{{ route('roles.create') }}"
             class="cursor-pointer px-3 py-2 text-xs font-medium text-white bg-green-600 rounded-md hover:bg-green-800 focus:ring-green-300 focus:outline-none focus:shadow-outline-green transition duration-150 ease-in-out">
             Create Role
         </a>
+        @endcan
 
         <div class="overflow-x-auto mt-6">
             <table class="min-w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -29,7 +31,6 @@
                     </tr>
                 </thead>
                 <tbody>
-
                     @foreach ($roles as $role)
                         <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800">
                             <td class="px-6 py-2 font-medium text-gray-900 dark:text-white">{{ $role->id }}</td>
@@ -43,14 +44,25 @@
 
                             </td>
                             <td class="px-6 py-2">
+                                @can('role.view')
                                 <a href="{{ route('roles.show', $role->id) }}"
-                                    class="cursor-pointer px-3 py-2 text-xs font-medium text-white bg-gray-600 rounded-md hover:bg-gray-500 transition duration-150 ease-in-out">Show</a>
+                                    class="cursor-pointer px-3 py-2 text-xs font-medium text-white bg-gray-600 rounded-md hover:bg-gray-500 transition duration-150 ease-in-out">
+                                    Show
+                                </a>
+                                @endcan
+                                @can('role.edit')
                                 <a href="{{ route('roles.edit', $role->id) }}"
-                                    class="cursor-pointer px-3 py-2 text-xs font-medium text-white bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none  transition duration-150 ease-in-out">Edit</a>
+                                    class="cursor-pointer px-3 py-2 text-xs font-medium text-white bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none  transition duration-150 ease-in-out">
+                                    Edit
+                                </a>
+                                @endcan
+                                @can('role.delete')
                                 <button wire:click="delete({{ $role->id }})"
                                     wire:confirm ="Are you sure to remove this role"
-                                    class="cursor-pointer px-3 py-2 text-xs font-medium text-white bg-red-600 rounded-md hover:bg-red-500 transition duration-150 ease-in-out">Delete</button>
-
+                                    class="cursor-pointer px-3 py-2 text-xs font-medium text-white bg-red-600 rounded-md hover:bg-red-500 transition duration-150 ease-in-out">
+                                    Delete
+                                </button>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach
